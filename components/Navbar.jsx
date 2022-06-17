@@ -11,32 +11,38 @@ function Navbar() {
   return (
     <div className={styles.navbar}>
       <div className="nav-section">
-        <a href="/">
-          <span className={`material-symbols-outlined ${styles.darkBlue}`}>
-            group
-          </span>
-          Nosotros
-        </a>
-        <a href="/">
-          <span className={`material-symbols-outlined ${styles.darkBlue}`}>
-            collections_bookmark
-          </span>
-          Colecciones
-        </a>
-        <a href="/">
-          <span className={`material-symbols-outlined ${styles.darkBlue}`}>
-            new_releases
-          </span>
-          Nuevo
-        </a>
+        <Link href="https://marketplace.discoper.io/">
+          <a>
+            <span className={`material-symbols-outlined ${styles.darkBlue}`}>
+              store
+            </span>
+            Marketplace
+          </a>
+        </Link>
+        <Link href="/">
+          <a>
+            <span className={`material-symbols-outlined ${styles.darkBlue}`}>
+              collections_bookmark
+            </span>
+            Colecciones
+          </a>
+        </Link>
+        <Link href="/">
+          <a>
+            <span className={`material-symbols-outlined ${styles.darkBlue}`}>
+              new_releases
+            </span>
+            Nuevo
+          </a>
+        </Link>
       </div>
-      <img src={logo.src} className={styles.logoNav} alt="" srcset="" />
+      <img src={logo.src} className={styles.logoNav} alt="" srcSet="" />
       <div className="nav-section buttons">
         {currentUser ? (
           <span
             title="Cerrar Sesión"
             onClick={() => logOut()}
-            class="material-symbols-outlined"
+            className="material-symbols-outlined"
           >
             logout
           </span>
