@@ -157,9 +157,9 @@ export function NavbarWrapper({ children }) {
           <img src={scrollTop ? eye : logoNegativo.src} alt="" srcSet="" />
         </div>
 
-        <div className={`${styles.rightButtons}`}>
-          {currentUser ? (
-            <>
+        {currentUser ? (
+          <>
+            <div className={`${styles.rightButtons}`}>
               <div className={styles.pfpContainer}>
                 <div
                   onClick={() => setPfpMenuToggler(!pfpMenuToggler)}
@@ -199,9 +199,11 @@ export function NavbarWrapper({ children }) {
                   {account ? account : "Connect Wallet"}
                 </button>
               </div>
-            </>
-          ) : (
-            <>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={`${styles.buttons}`}>
               <Link href={"/access?form=1"} passHref>
                 <a className={styles.thirdButton}>
                   <p>Ingresa</p>
@@ -212,9 +214,9 @@ export function NavbarWrapper({ children }) {
                   <p>Registrate</p>
                 </a>
               </Link>
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
       </div>
       <NavContext.Provider value={{ setEyeAnimation, eyeAnimation }}>
         {children}
