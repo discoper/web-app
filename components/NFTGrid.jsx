@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import styles from "../styles/Home.module.scss";
 function NFTGrid({ rows, quantity, responsive }) {
   const [nft, setNft] = useState([{ title: "a" }]);
@@ -15,10 +15,17 @@ function NFTGrid({ rows, quantity, responsive }) {
           price: Math.random().toFixed(3),
         });
       }
-      setNumberRows(window.innerWidth > 600 ? rows : responsive);
       setNft((nft) => nfts);
     };
     return app();
+  }, []);
+  useEffect(() => {
+    function updateSize() {
+      setNumberRows(window.innerWidth < 800 ? responsive : rows);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
   }, []);
   return (
     <div

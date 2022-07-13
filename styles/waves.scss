@@ -1,0 +1,103 @@
+.olas {
+  height: 143px !important;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+.olasB {
+  height: 143px !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.waveContentContainerW {
+  background-color: white;
+}
+.waveContentContainerD {
+  max-width: -5px 0px;
+  padding: 40px 0px;
+  background-color: #3e28b2;
+}
+.voltear {
+  moz-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+  filter: FlipV;
+  -ms-filter: "FlipV";
+}
+.voltear > * {
+  margin-top: 1px;
+}
+.wavel1 {
+  top: 0;
+  position: absolute;
+  background: url("../public/wave.png");
+  width: 100%;
+  overflow-x: hidden;
+  background-size: auto auto;
+  background-position: 0px 0px;
+  height: 143px;
+  background-repeat: repeat-x;
+  animation: animate-lineas 20s linear infinite;
+}
+.wavel2 {
+  bottom: 0;
+  background-repeat: repeat-x;
+  background: url("../public/wave.png");
+  width: 100%;
+  opacity: 0.5;
+  overflow-x: hidden;
+  background-size: auto auto;
+  background-position: 100px 0px;
+  height: 143px;
+  margin: 0px 0px;
+  animation: animate-lineas 14s linear infinite;
+}
+.waved1 {
+  position: absolute;
+  //   background: url("../images/waveb-1.png");
+  width: 100%;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  background-size: auto auto;
+  background-position: 0px 0px;
+  height: 143px;
+  background-repeat: repeat-x;
+  animation: animate-lineas reverse 10s linear infinite;
+}
+.waved2 {
+  position: absolute;
+  //   background: url("../images/waveb-2.png");
+  opacity: 0.8;
+  width: 100%;
+  overflow-x: hidden;
+  background-size: auto auto;
+  background-position: 100px 0px;
+  height: 143px;
+  background-repeat: repeat-x;
+  animation: animate-lineas 5s linear infinite;
+}
+.waved3 {
+  position: absolute;
+  //   background: url("../images/waveb-3.png");
+  width: 100%;
+  opacity: 0.7;
+  overflow-x: hidden;
+  background-size: auto auto;
+  background-position: 40px 0px;
+  height: 143px;
+  background-repeat: repeat-x;
+  animation: animate-lineas 7s linear infinite;
+}
+@keyframes animate-lineas {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1360px 0;
+  }
+}

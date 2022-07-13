@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../styles/Home.module.scss";
 import useAuth from "../../components/authContext";
+import Router from "next/router";
 function Login() {
   const { logIn } = useAuth();
   const [err, setErr] = useState();
@@ -61,6 +62,12 @@ function Login() {
         </div>
         <button type="submit" className={styles.primaryButton}>
           <h4>Ingresar</h4>
+        </button>
+        <button
+          className={styles.thirdButton}
+          onClick={() => Router.push("/verifyEmailForPass")}
+        >
+          Olvide mi contraseña
         </button>
       </form>
     </>

@@ -23,6 +23,13 @@ function ArtistsGrid({ rows, quantity, responsive }) {
     };
     return app();
   }, []);
+  useEffect(() => {
+    function updateSize() {
+      setNumberRows(window.innerWidth < 600 ? responsive : rows);
+    }
+    window.addEventListener("resize", updateSize);
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
   return (
     <>
       <div

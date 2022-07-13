@@ -1,0 +1,148 @@
+@use "./color" as c;
+.containerRoadmap * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.containerRoadmap {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 50px 0;
+}
+hr.hrRoadmap {
+  margin: 15px 0px;
+  border-color: #343d60 !important;
+}
+.roadmap {
+  width: 80%;
+  height: auto;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.roadmap ul {
+  list-style: none;
+}
+.roadmap ul li {
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border-style: solid;
+  border-color: c.$DarkBlue;
+  background: linear-gradient(#1c1c1cd4, #1c1c1cd4);
+  // url("../img/synthwave-grid-2.jpg");
+  background-attachment: fixed !important;
+  -ms-transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  background-position: center bottom;
+  border-width: 1px;
+  // opacity: 0;
+}
+.roadmap ul li .roadmapContent p {
+  margin: 15px 0px !important;
+  /* font-size: 1.4em; */
+}
+.roadmap ul li .roadmapContent h1,
+.roadmap ul li .roadmapContent h1 span {
+  text-align: center;
+}
+.containerRoadmap::after {
+  content: "";
+  position: absolute;
+  background: url("../public/WALL-DISCOPERFIN.png");
+  background-size: cover;
+  background-position: right;
+  clip-path: polygon(0 0, 0% 100%, 100% 50%);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.roadmap ul li:last-child {
+  margin-bottom: 0;
+}
+.roadmap ul li.roadmapFadeIn:nth-child(odd) {
+  animation: roadmap-fade-in-odd 2s forwards;
+}
+.roadmap ul li.roadmapFadeIn:nth-child(even) {
+  animation: roadmap-fade-in-even 2s forwards;
+}
+@media only screen and (min-width: 769px) {
+  .roadmap:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: c.$Pink;
+  }
+  .roadmap ul li {
+    width: 50%;
+    position: relative;
+    margin-bottom: 50px;
+  }
+  .roadmap ul li:nth-child(odd) {
+    float: left;
+    clear: right;
+    transform: translateX(-30px);
+    border-radius: 20px 0px 20px 20px;
+  }
+  .roadmap ul li:nth-child(even) {
+    float: right;
+    clear: left;
+    transform: translateX(30px);
+    border-radius: 0px 20px 20px 20px;
+  }
+  .roadmap ul li::before {
+    content: "";
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: url("../public/ojo.png");
+    background-size: 100% 100%;
+    top: 0px;
+  }
+  .roadmap ul li:nth-child(odd)::before {
+    transform: translate(50%, -50%);
+    right: -30px;
+  }
+  .roadmap ul li:nth-child(even)::before {
+    transform: translate(-50%, -50%);
+    left: -30px;
+  }
+  .roadmapContent .date {
+    position: absolute;
+    top: -30px;
+  }
+}
+@keyframes roadmap-fade-in-odd {
+  0% {
+    transform: translateX(-40%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-30px);
+    opacity: 1;
+  }
+}
+@keyframes roadmap-fade-in-even {
+  0% {
+    transform: translateX(40%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(30px);
+    opacity: 1;
+  }
+}

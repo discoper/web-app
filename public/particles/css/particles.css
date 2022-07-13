@@ -2,7 +2,8 @@ canvas {
   display: block;
   vertical-align: bottom;
 } /* ---- particles.js container ---- */
-#particles-js {
+#particles-js,
+#particles-js-footer {
   position: absolute;
   top: 0;
   bottom: 0;
