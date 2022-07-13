@@ -6,7 +6,7 @@ import FadeInSection from "../components/isVisible";
 import Footer from "../components/Footer";
 import useAuth from "../components/authContext";
 import Particles from "../components/Particles";
-import logo from "../public/HorzLogo.png";
+import logo from "../public/LETRAS-SOLA-DISCOPER.png";
 import bg1 from "../public/roadmap.jpg";
 import bg2 from "../public/WALL-DISCOPERCOFRE2.png";
 import pfp from "../public/blankpfp.jpg";
@@ -20,13 +20,10 @@ export default function Home() {
       <div className={`container ${styles.degradado}`}>
         <div className={`${styles.jumbotron} ${styles.transparentBg}`}>
           <Particles />
-          <FadeInSection className={styles.jumbotronTitleSection}>
-            <div className={styles.jumbotronTitleContainer}>
-              <div className={styles.jumbotronTitle}>
-                <img src={logo.src} />
-              </div>
-            </div>
-            <hr />
+          <FadeInSection
+            className={`${styles.jumbotronTitleSection} ${styles.textCenter}`}
+          >
+            <img src={logo.src} alt="" />
             <p className={`${styles.textLead} ${styles.white}`}>
               Es un Club Social Descentralizado, en el que los socios o
               accionistas obtienen un porcentaje de distribución de ingresos.
@@ -51,12 +48,6 @@ export default function Home() {
                 </div>
               </div>
             )}
-          </FadeInSection>
-          <FadeInSection className="new-nft-jumbotron-section">
-            <div>
-              <div className={styles.nftCollageBackground}></div>
-              <h1 className={styles.primaryTitle}>NFT Collage</h1>
-            </div>
           </FadeInSection>
         </div>
         <div className={styles.pageSection}>

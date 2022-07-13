@@ -3,6 +3,7 @@ import { auth, firestore } from "../firebaseConfig";
 import Router from "next/router";
 import axios from "axios";
 import Loading from "./Loading";
+import { useBlockChainContext } from "./BlockchainContex";
 const AuthContext = React.createContext();
 export default function useAuth() {
   return useContext(AuthContext);
@@ -36,6 +37,31 @@ export function AuthProvider({ children }) {
   };
   const changeEmail = async (email) => {
     await currentUser.user.updateEmail(email);
+  };
+  const addWallet = async (wallet) => {
+    const walletMatch = firestore
+      .collection("users")
+      .doc(currentUser.user.uid)
+      .collection("wallets")
+      .doc(wallet);
+    if (!(await walletMatch.get().exists))
+      throw { message: "Wallet ya guardada" };
+
+    await walletMatch.set({ wallet: wallet, main: false });
+  };
+  const getWallets = async () => {
+    let userWallets = [];
+    await firestore
+      .collection("users")
+      .doc(currentUser.user.uid)
+      .collection("wallets")
+      .get()
+      .then((wallets) => {
+        wallets.docs.map((wallet) => {
+          userWallets.push(wallet.data());
+        });
+      });
+    return userWallets;
   };
   const signUp = async (email, password, refLink, creador) => {
     try {
@@ -126,8 +152,9 @@ export function AuthProvider({ children }) {
   };
   const value = {
     currentUser,
-    changeUsername,
     changeEmail,
+    addWallet,
+    getWallets,
     logIn,
     logOut,
     signUp,

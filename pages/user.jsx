@@ -162,8 +162,15 @@ const Referidos = () => {
   );
 };
 const Wallets = () => {
-  const { currentUser } = useAuth();
-  const { wallet } = currentUser;
+  const { currentUser, getWallets } = useAuth();
+  const [wallets, setWallets] = useState([]);
+  useEffect(() => {
+    console.log("Aa");
+    const app = async () => {
+      setWallets(await getWallets());
+    };
+    return app;
+  }, []);
   return (
     <>
       <div className={`${styles.cajaBlanca2} ${styles.perfilContenido}`}>
@@ -178,12 +185,12 @@ const Wallets = () => {
           <h2>Guardar Nueva Wallet</h2>
         </button>
         <div className={styles.referidosBox}>
-          {wallet.length ? (
+          {wallets.length ? (
             <>
-              {wallet.map((doc) => {
+              {wallets.map((doc) => {
                 return (
                   <div key={doc} className={styles.textLead}>
-                    {doc}
+                    {doc.wallet}
                   </div>
                 );
               })}
